@@ -6,6 +6,9 @@ class CoinView extends React.Component {
         return (
         <View style={styles.container}>
             <Text>New View </Text>
+            <View style={this.props.style}>
+                <Text> CoinView GoGo </Text>
+            </View>
         </View>
         )
     }

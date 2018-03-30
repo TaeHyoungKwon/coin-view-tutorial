@@ -7,13 +7,16 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <TopBar></TopBar>
+       
         <StatusBar
           hidden={true}
           backgroundColor="blue"// android only
           barStyle="light-content" 
         />
-        <CoinView></CoinView>
+
+        <TopBar title="코인 시세"/>
+        <CoinView style={styles.coinView}/>
+
       </View>
     );
   }
@@ -26,4 +29,12 @@ const styles = StyleSheet.create({
     //alignItems: 'center',
     //justifyContent: 'center',
   },
+  coinView: {
+    width: '100%',
+    flex: 1,
+    flexDirection: 'column',
+    backgroundColor: 'skyblue',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  }
 });
