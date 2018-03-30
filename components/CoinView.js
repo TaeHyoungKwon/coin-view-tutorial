@@ -3,17 +3,48 @@ import { StyleSheet, Text, View } from 'react-native';
 import CoinDetail from './CoinDetail';
 
 class CoinView extends React.Component {
-    render () {
-        let coinDetailCells = (
-            <View>
-                <CoinDetail></CoinDetail>
-                <CoinDetail></CoinDetail>
-                <CoinDetail></CoinDetail>
-                <CoinDetail></CoinDetail>    
-            </View>
-        );
+    constructor(props) {
+        super(props);
+        this.state = {
+            coinDatas: [],
+            isLoaded: false,
+        };
 
-        let detailCells = sampleData.map((data, index) => {
+    }
+    componentDidMount() {
+        this._getCoinDatas(10);
+
+        setInterval(() => {
+            this._getCoinDatas(10);
+            console.log('toggled!');
+        },10000);
+    }
+
+    _getCoinDatas(limit) {
+        this.setState({
+            isLoaded: false,
+        });
+        console.log("kwontaehyoung")
+    
+        fetch(
+            `http://api.coinmarketcap.com/v1/ticker/?limit=${limit}`
+        )
+        .then(response => response.json())
+        .then(data => {
+            console.log("ahahahah");
+            console.log(data);
+            this.setState({
+                coinDatas: data,
+                isLoaded: true,
+                });
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+
+    render () {
+
+        let detailCells = this.state.coinDatas.map((data, index) => {
             const {rank, name, price_usd, market_cap_usd, time} = data;
             return (
                 <CoinDetail
@@ -28,12 +59,13 @@ class CoinView extends React.Component {
 
         return (
         <View style={this.props.style}>
-            {coinDetailCells}
+         
             {detailCells}
         </View>
         )
     }
 }
+
 
 export default CoinView;
 
