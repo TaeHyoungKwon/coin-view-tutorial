@@ -35,6 +35,6 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     backgroundColor: 'skyblue',
     alignItems: 'center',
-    justifyContent: 'space-around',
+    //justifyContent: 'space-around',
   }
 });

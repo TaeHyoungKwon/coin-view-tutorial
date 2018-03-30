@@ -16,7 +16,7 @@ class TopBar extends React.Component {
 const styles = StyleSheet.create({
     container: {
         width: '100%',
-        height: 70,
+        height: 80,
         flexDirection: 'row',
         backgroundColor: 'yellow',
         alignItems: 'center',
