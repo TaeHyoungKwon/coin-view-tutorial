@@ -1,5 +1,5 @@
 import React from 'react'
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, ScrollView} from 'react-native';
 import CoinDetail from './CoinDetail';
 
 class CoinView extends React.Component {
@@ -11,40 +11,40 @@ class CoinView extends React.Component {
         };
 
     }
-    componentDidMount() {
-        this._getCoinDatas(10);
+    // componentDidMount() {
+    //     this._getCoinDatas(10);
 
-        setInterval(() => {
-            this._getCoinDatas(10);
-            console.log('toggled!');
-        },10000);
-    }
+    //     setInterval(() => {
+    //         this._getCoinDatas(10);
+    //         console.log('toggled!');
+    //     },10000);
+    // }
 
-    _getCoinDatas(limit) {
-        this.setState({
-            isLoaded: false,
-        });
-        console.log("kwontaehyoung")
+    // _getCoinDatas(limit) {
+    //     this.setState({
+    //         isLoaded: false,
+    //     });
+    //     console.log("kwontaehyoung")
     
-        fetch(
-            `http://api.coinmarketcap.com/v1/ticker/?limit=${limit}`
-        )
-        .then(response => response.json())
-        .then(data => {
-            console.log("ahahahah");
-            console.log(data);
-            this.setState({
-                coinDatas: data,
-                isLoaded: true,
-                });
-            }).catch(error => {
-                console.log(error);
-            })
-        }
+    //     fetch(
+    //         `http://api.coinmarketcap.com/v1/ticker/?limit=${limit}`
+    //     )
+    //     .then(response => response.json())
+    //     .then(data => {
+    //         console.log("ahahahah");
+    //         console.log(data);
+    //         this.setState({
+    //             coinDatas: data,
+    //             isLoaded: true,
+    //             });
+    //         }).catch(error => {
+    //             console.log(error);
+    //         })
+    //     }
 
     render () {
 
-        let detailCells = this.state.coinDatas.map((data, index) => {
+        let detailCells = sampleData.map((data, index) => {
             const {rank, name, price_usd, market_cap_usd, time} = data;
             return (
                 <CoinDetail
@@ -58,10 +58,9 @@ class CoinView extends React.Component {
         });
 
         return (
-        <View style={this.props.style}>
-         
+        <ScrollView style={this.props.style}>
             {detailCells}
-        </View>
+        </ScrollView>
         )
     }
 }
@@ -72,8 +71,8 @@ export default CoinView;
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1, flex: 1,
-      backgroundColor: 'skyblue',
+      flex: 1,
+      backgroundColor: 'white',
       alignItems: 'center',
       justifyContent: 'center',
     },

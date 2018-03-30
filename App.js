@@ -33,8 +33,8 @@ const styles = StyleSheet.create({
     width: '100%',
     flex: 1,
     flexDirection: 'column',
-    backgroundColor: 'skyblue',
-    alignItems: 'center',
+    backgroundColor: 'white',
+    //alignItems: 'center',
     //justifyContent: 'space-around',
   }
 });
